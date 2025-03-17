@@ -886,7 +886,8 @@ function calculateMatrix1Lottery() {
       expectedWinners: Math.round(expectedWinners).toLocaleString(), // Format with commas
       odds: Math.round(odds).toLocaleString(), // Format odds
       //prize: prize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }), // Prize formatted with commas
-      prize: prize === 0 ? "$0.00" : `${prize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      //prize: prize === 0 ? "$0.00" : `${prize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      prize: prize === "Jackpot" ? "Jackpot" : `$${parseFloat(prize).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
       liability: liability.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }), // Liability formatted with commas
     });
     
@@ -964,7 +965,8 @@ function calculateTwoMatrixLottery() {
           match: `${i} + ${j}`,
           expectedWinners: Math.round(expectedWinners).toLocaleString(),
           odds: odds.toFixed(2).toLocaleString(),
-          prize: prize === 0 ? "$0.00" : `${prize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+          //prize: prize === 0 ? "$0.00" : `${prize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+          prize: prize === "Jackpot" ? "Jackpot" : `$${parseFloat(prize).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
           liability: liability.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
         });
       }
@@ -1027,7 +1029,8 @@ function calculateKenoPayout() {
       expectedWinners: Math.round(expectedWinners).toLocaleString(),
       //odds: odds.toFixed(2), // Updated odds logic
       odds: odds.toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 4 }),
-      prize: prize === 0 ? "0.00" : `${prize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      //prize: prize === 0 ? "0.00" : `${prize.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      prize: prize === "Jackpot" ? "Jackpot" : `$${parseFloat(prize).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,      
       liability: liability.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
     });
 
@@ -1109,7 +1112,7 @@ function displayResults(results, totalProbability, overallOdds, totalLiability, 
 
   appendMessage(
     "bot",
-    `Match: ${result.match} \nExpected Winners: ${result.expectedWinners} \nOdds: 1 in ${result.odds} \nPrize: $${result.prize} \nLiability: $${result.liability}`
+    `Match: ${result.match} \nExpected Winners: ${result.expectedWinners} \nOdds: 1 in ${result.odds} \nPrize: ${result.prize} \nLiability: $${result.liability}`
   )});
   appendMessage("bot", `Total Probability: ${(totalProbability * 100).toFixed(2)}%`);
   appendMessage("bot", `Overall Odds: 1 in ${overallOdds.toFixed(2).toLocaleString()}`);
@@ -1134,7 +1137,7 @@ function displayResults(results, totalProbability, overallOdds, totalLiability, 
     if (gameData.type !== "Keno" && grossSales !== undefined) {
       appendMessage(
         "bot",
-        `Total Gross Sales: $${grossSales.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        `Total Gross Sales: ${grossSales.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
       );
     }
   

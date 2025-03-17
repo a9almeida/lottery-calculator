@@ -1122,14 +1122,22 @@ function displayResults(results, totalProbability, overallOdds, totalLiability, 
       appendMessage("bot", `Total Sum of Winners: ${totalSumWinners.toLocaleString()}`);
     }
 
-  if (gameData.type !== "Keno") {
-    const grossSales = totalCombinations * gameData.gamePrice;
-    appendMessage(
-      "bot",
-      `Total Gross Sales: $${grossSales.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
-    );
-  }
+  // if (gameData.type !== "Keno") {
+  //   const grossSales = totalCombinations * gameData.gamePrice;
+  //   appendMessage(
+  //     "bot",
+  //     `Total Gross Sales: $${grossSales.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+  //   );
+  // }
 
+        // Grow Sales
+    if (gameData.type !== "Keno" && grossSales !== undefined) {
+      appendMessage(
+        "bot",
+        `Total Gross Sales: $${grossSales.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+      );
+    }
+  
   // add download button
   createDownloadButton(results, totalProbability, overallOdds, totalLiability, totalWinners, grossSales, totalSumWinners)
 

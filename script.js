@@ -1070,7 +1070,7 @@ function downloadResultsAsCSV(results, totalProbability, overallOdds, totalLiabi
     const expectedWinners = result.expectedWinners;
     // const odds = result.odds;
     const odds = result.odds ? (result.odds).toLocaleString(undefined, { minimumFractionDigits: 4, maximumFractionDigits: 4 }) : "" ;
-    const prize = result.prize === "Jackpot" ? "Jackpot" : `$${(result.prize).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    const prize = result.prize === "Jackpot" ? "Jackpot" : `${(result.prize).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     const liability = result.liability ? `$${(result.liability).toLocaleString()}` : "";
 
     // Add the row to the CSV
@@ -1137,7 +1137,7 @@ function displayResults(results, totalProbability, overallOdds, totalLiability, 
     if (gameData.type !== "Keno" && grossSales !== undefined) {
       appendMessage(
         "bot",
-        `Total Gross Sales: ${grossSales.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        `Total Gross Sales: $${grossSales.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
       );
     }
   
